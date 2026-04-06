@@ -1,0 +1,29 @@
+### config/ekf.yaml
+ekf_filter_node:
+  ros__parameters:
+    use_sim_time: false
+    two_d_mode: true
+    publish_tf: true     # The EKF will publish odom -> base_link
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_link
+    world_frame: odom
+
+    # Wheel Odometry (from diff_cont)
+    odom0: /diff_cont/odom
+    odom0_config: [false, false, false,
+                   false, false, false,
+                   true,  false,  false,
+                   false, false, false,
+                   false, false, false]
+    odom0_differential: false
+
+    # IMU (from RealSense)
+    imu0: /camera/camera/imu
+    imu0_config: [false, false, false,
+                  false, false, false,
+                  false, false, false,
+                  false, false, true,
+                  false,  false, false]
+    imu0_differential: false
+    imu0_remove_gravitational_acceleration: true

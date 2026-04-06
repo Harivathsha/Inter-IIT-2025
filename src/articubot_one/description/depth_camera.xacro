@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <link name="camera_link">
+        <visual>
+            <origin xyz="10.254 0.0 0.23" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="file://$(find wh_bot)/meshes/kinect/d415.dae"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                 <box size="0.07 0.3 0.09"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.01"/>
+            <inertia ixx="3.129688" iyy="8.85739" izz="6.917516" ixy="0.051946" iyz="0.0" ixz="0.0"/>
+        </inertial>
+    </link>
+
+    <joint name="camera_joint" type="fixed">
+        <origin rpy="0 0 1.57" xyz="10.254 0.0 0.23"/>
+        <parent link="base_link"/>
+        <child link="camera_link"/>
+    </joint>
+
+    </robot>

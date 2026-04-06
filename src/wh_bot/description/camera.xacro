@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+        <!-- STEREO CAMERA -->
+
+        <link name="stereo_camera">
+
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.07 0.3 0.09"/>
+                </geometry>
+            </collision>
+
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="file://$(find wh_bot)/meshes/kinect/d415.dae"/>
+                </geometry>
+                <material name="black"/>
+            </visual>
+
+            <inertial>
+                <mass value="0.01"/>
+                    <inertia ixx="3.129688" iyy="8.85739" izz="6.917516" ixy="0.051946" iyz="0.0" ixz="0.0"/>
+            </inertial>
+
+        </link>
+
+        <joint name="stereo_camera_joint" type="fixed">
+            <origin rpy="0 0 1.57" xyz="0.00819398999214172 0.0205205416083335876 0.02934401321411133"/>
+            <parent link="camera_mount_1"/>
+            <child link="stereo_camera"/>
+        </joint>
+
+        <link name="stereo_camera_optical"/>
+
+        <joint name="stereo_camera_optical_joint" type="fixed">
+            <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+            <parent link="stereo_camera"/>
+            <child link="stereo_camera_optical"/>
+        </joint>
+
+
+
+        <gazebo reference="stereo_camera">
+            <sensor type="camera" name="right">
+                <update_rate>10.0</update_rate>
+                <always_on>true</always_on>
+                <gz_frame_id>stereo_camera_optical</gz_frame_id>
+                <pose>0 -0.12 0 0 0 0</pose>
+                <topic>z_axis_camera_2/image_raw</topic>
+                <camera_info_topic>z_axis_camera_2/camera_info</camera_info_topic>
+                <horizontal_fov>1.3962634</horizontal_fov>
+                <image>
+                    <width>1980</width>
+                    <height>1020</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.01</near>
+                    <far>20</far>
+                </clip>
+            </sensor>
+        </gazebo>
+</robot>

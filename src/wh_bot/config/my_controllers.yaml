@@ -1,0 +1,76 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 1000  # Hz
+    use_sim_time: true
+
+    # .................... LIST OF CONTROLLERS ....................
+    
+    # 1. Publishes the state of all joints to /joint_states
+    joint_broad:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    # # 2. Your existing lift controller
+    # torso_controller:
+    #   type: joint_trajectory_controller/JointTrajectoryController
+
+    # 3. The controller to drive the wheels
+    diff_cont:
+      type: diff_drive_controller/DiffDriveController
+
+
+# .................... CONTROLLER CONFIGURATIONS ....................
+
+# torso_controller:
+#   ros__parameters:
+#     joints:
+#       - joint_lift_2
+#     command_interfaces:
+#       - position
+#     state_interfaces:
+#       - position
+#       - velocity
+
+diff_cont:
+  ros__parameters:
+  
+    publish_rate: 50.0
+
+    base_frame_id: base_link
+
+    # Joint names from your URDF (revolute_2=left, revolute_1=right)
+    left_wheel_names: ["left_wheel_joint"]
+    right_wheel_names: ["right_wheel_joint"]
+
+    wheel_separation: 0.46
+    wheel_radius: 0.05
+
+    # odom_frame_id: odom
+    use_stamped_vel: false
+
+    
+    # Simulation usually provides perfect velocity, but position feedback is often smoother
+    # If your robot acts jittery, try changing this to false.
+    # position_feedback: true 
+    
+    # TF - UPDATED HERE
+    # enable_odom_tf: true  # Changed to true to publish the odom -> base_link transform
+
+    # Input Command
+    # false = subscribes to geometry_msgs/Twist (like /cmd_vel)
+    # true  = subscribes to geometry_msgs/TwistStamped
+    # use_stamped_vel: false
+
+    # Limits (Optional but recommended)
+    # linear:
+    #   x:
+    #     has_velocity_limits: true
+    #     max_velocity: 1.0   # m/s
+    #     min_velocity: -1.0
+    #     has_acceleration_limits: true
+    #     max_acceleration: 1.0
+    # angular:
+    #   z:
+    #     has_velocity_limits: true
+    #     max_velocity: 2.0   # rad/s
+    #     has_acceleration_limits: true
+    #     max_acceleration: 2.0

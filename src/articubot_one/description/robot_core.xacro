@@ -1,0 +1,318 @@
+<?xml version="1.0" ?>
+<robot name="final_urdf" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find wh_bot)/description/materials.xacro" />
+<xacro:include filename="$(find articubot_one)/description/inertial_macros.xacro" />
+
+
+    <xacro:property name="chassis_length" value="0.335"/>
+    <xacro:property name="chassis_width" value="0.265"/>
+    <xacro:property name="chassis_height" value="0.138"/>
+    <xacro:property name="chassis_mass" value="1.0"/>
+    <xacro:property name="wheel_radius" value="0.033"/>
+    <xacro:property name="wheel_thickness" value="0.026"/>
+    <xacro:property name="wheel_mass" value="0.05"/>
+    <xacro:property name="wheel_offset_x" value="0.226"/>
+    <xacro:property name="wheel_offset_y" value="0.1485"/>
+    <xacro:property name="wheel_offset_z" value="0.01"/>
+    <xacro:property name="caster_wheel_radius" value="0.01"/>
+    <xacro:property name="caster_wheel_mass" value="0.01"/>
+    <xacro:property name="caster_wheel_offset_x" value="0.075"/>
+    <xacro:property name="caster_wheel_offset_z" value="${wheel_offset_z - wheel_radius + caster_wheel_radius}"/>
+
+    
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.0015875 0.001 0.0831" rpy="0 0 0"/>
+    <mass value="15.0"/>
+    <inertia ixx="0.3" iyy="0.6" izz="0.8" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find wh_bot)/meshes/tirth_bot/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find wh_bot)/meshes/tirth_bot/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel1_1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="2.436"/>
+    <inertia ixx="0.0018" iyy="0.003" izz="0.0018" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.214 -0.029" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find wh_bot)/meshes/tirth_bot/wheel1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="-1.5707 0 0"/>
+    <geometry>
+       <cylinder radius="0.05" length="0.02"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel2_1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="2.436"/>
+    <inertia ixx="0.0018" iyy="0.003" izz="0.0018" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.216 -0.029" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find wh_bot)/meshes/tirth_bot/wheel2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="-1.5707 0 0"/>
+    <geometry>
+      <cylinder radius="0.05" length="0.02"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mount_rod_1">
+  <inertial>
+    <origin xyz="0 0 0.8325" rpy="0 0 0"/>
+    <mass value="6.415"/>
+    <inertia ixx="1.482" iyy="1.482" izz="0.0005" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.001 -0.159" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find wh_bot)/meshes/tirth_bot/mount_rod_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.001 -0.159" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find wh_bot)/meshes/tirth_bot/mount_rod_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="camera_mount_1">
+  <inertial>
+    <origin xyz="0.021 -0.057 0.044" rpy="0 0 0"/>
+    <mass value="1.279"/>
+    <inertia ixx="0.0036" iyy="0.0035" izz="0.0035" ixy="0.0002" iyz="0.0004" ixz="-0.0001"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.001 -0.164" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find wh_bot)/meshes/tirth_bot/camera_mount_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.001 -0.164" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find wh_bot)/meshes/tirth_bot/camera_mount_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="castor_wheel_1_1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="0.055"/>
+    <inertia ixx="4e-06" iyy="6e-06" izz="8e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1839 0.0935 0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find wh_bot)/meshes/tirth_bot/castor_wheel_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+       <sphere radius="0.018"/> 
+    </geometry>
+  </collision>
+</link>
+
+<link name="castor_wheel_2_1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="0.055"/>
+    <inertia ixx="4e-06" iyy="6e-06" izz="8e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.1839 0.0935 0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find wh_bot)/meshes/tirth_bot/castor_wheel_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="0.018"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="castor_wheel_3_1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="0.055"/>
+    <inertia ixx="4e-06" iyy="6e-06" izz="8e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1839 -0.0955 0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find wh_bot)/meshes/tirth_bot/castor_wheel_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="0.018"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="castor_wheel_4_1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="0.055"/>
+    <inertia ixx="4e-06" iyy="6e-06" izz="8e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.1839 -0.0955 0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find wh_bot)/meshes/tirth_bot/castor_wheel_4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="0.018"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="right_wheel_joint" type="continuous">
+  <origin xyz="0.0 -0.214 0.029" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel1_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="left_wheel_joint" type="continuous">
+  <origin xyz="0.0 0.216 0.029" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel2_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="rigid_1" type="fixed">
+  <origin xyz="0.0 0.001 0.159" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="mount_rod_1"/>
+</joint>
+
+<joint name="joint_lift_2" type="prismatic">
+  <origin xyz="0.0 0.001 0.164" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="camera_mount_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="1.8" lower="-0.001" effort="100" velocity="100"/>
+</joint>
+
+<joint name="rigid_2" type="fixed">
+  <origin xyz="0.1839 -0.0935 -0.003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="castor_wheel_1_1"/>
+</joint>
+
+<joint name="rigid_3" type="fixed">
+  <origin xyz="-0.1839 -0.0935 -0.003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="castor_wheel_2_1"/>
+</joint>
+
+<joint name="rigid_4" type="fixed">
+  <origin xyz="0.1839 0.0955 -0.003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="castor_wheel_3_1"/>
+</joint>
+
+<joint name="rigid_5" type="fixed">
+  <origin xyz="-0.1839 0.0955 -0.003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="castor_wheel_4_1"/>
+</joint>
+
+<joint name="camera_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="camera_link"/>
+            <origin rpy="0 0 0" xyz="0.28 0.0 0.3"/>  
+            </joint>
+
+  <link name="camera_link">
+  </link>
+
+<joint name="camera_imu_joint" type="fixed">
+      <parent link="camera_link"/>
+      <child link="camera_imu_optical_frame"/>
+            <origin rpy="0 0 0" xyz="0.28 0.0 0.13"/>  
+            </joint>
+
+  <link name="camera_imu_optical_frame">
+  </link>
+
+
+<gazebo reference="wheel1_1">
+  <mu1>200.0</mu1>
+  <mu2>200.0</mu2>
+  <kp>1000000.0</kp>
+  <kd>1.0</kd>
+</gazebo>
+
+<gazebo reference="wheel2_1">
+  <mu1>200.0</mu1>
+  <mu2>200.0</mu2>
+  <kp>1000000.0</kp>
+  <kd>1.0</kd>
+</gazebo>
+
+<gazebo reference="castor_wheel_1_1">
+  <mu1>0.001</mu1>
+  <mu2>0.001</mu2>
+</gazebo>
+
+<gazebo reference="castor_wheel_2_1">
+  <mu1>0.001</mu1>
+  <mu2>0.001</mu2>
+</gazebo>
+
+<gazebo reference="castor_wheel_3_1">
+  <mu1>0.001</mu1>
+  <mu2>0.001</mu2>
+</gazebo>
+
+<gazebo reference="castor_wheel_4_1">
+  <mu1>0.001</mu1>
+  <mu2>0.001</mu2>
+</gazebo>
+
+</robot>

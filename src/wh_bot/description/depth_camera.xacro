@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+        <link name="kinect_camera">
+
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <box size="0.07 0.3 0.09"/>
+                </geometry>
+            </collision>
+
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="file://$(find wh_bot)/meshes/kinect/d415.dae"/>
+                </geometry>
+                <material name="black"/>
+            </visual>
+
+            <inertial>
+                <mass value="0.01"/>
+                <inertia ixx="3.129688" iyy="8.85739" izz="6.917516" ixy="0.051946" iyz="0.0" ixz="0.0"/>
+
+            </inertial>
+
+        </link>
+
+        <joint name="kinect_camera_joint" type="fixed">
+            <origin rpy="0 0 -3.14" xyz="-0.2544510997831821442 0.0 0.23"/>
+            <parent link="base_link"/>
+            <child link="kinect_camera"/>
+        </joint>
+
+        <link name="kinect_camera_optical"/>
+
+        <joint name="kinect_camera_optical_joint" type="fixed">
+            <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+            <parent link="kinect_camera"/>
+            <child link="kinect_camera_optical"/>
+        </joint>
+
+
+        <gazebo reference="kinect_camera">
+            <sensor type="depth_camera" name="kinect_camera">
+                <update_rate>30.0</update_rate>
+                <topic>kinect_camera</topic>
+                <gz_frame_id>kinect_camera</gz_frame_id>
+                <camera>
+                    <camera_info_topic>kinect_camera/camera_info</camera_info_topic>
+                    <horizontal_fov>1.343222</horizontal_fov>
+                    <image>
+                        <width>640</width>
+                        <height>480</height>
+                        <format>R8G8B8</format>
+                    </image>
+                    <clip>
+                        <near>0.15</near>
+                        <far>6.0</far>
+                    </clip>
+                </camera>
+            </sensor>
+
+            <sensor type="camera" name="rgb_camera">
+                <update_rate>30.0</update_rate>
+                <topic>rgb_camera</topic>
+                <gz_frame_id>kinect_camera</gz_frame_id>
+                <camera>
+                    <camera_info_topic>rgb_camera/camera_info</camera_info_topic>
+                    <horizontal_fov>1.34322</horizontal_fov>
+                    <image>
+                        <width>640</width>
+                        <height>480</height>
+                        <format>R8G8B8</format>
+                    </image>
+                    <clip>
+                        <near>0.15</near>
+                        <far>6.0</far>
+                    </clip>
+                </camera>
+            </sensor>
+        </gazebo>
+
+
+</robot>
