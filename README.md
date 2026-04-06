@@ -82,15 +82,12 @@ rosdep install --from-paths src --ignore-src -r -y
 colcon build --symlink-install
 
 ```
-https://github.com/user-attachments/assets/a56d0437-14ac-418a-b8ae-97123a8bd709
+<img width="1026" height="558" alt="Screenshot from 2026-03-26 23-19-12" src="https://github.com/user-attachments/assets/f1156a39-781c-40f1-bdcf-57ad62cb48ce" />
 
 
-<img width="1026" height="558" alt="Screenshot from 2026-03-26 23-19-12" src="https://github.com/user-attachments/assets/f24adc9f-44c5-4ec6-a38f-2c9d92cc1f3a" />
-
-
-![IMG20251206213609](https://github.com/user-attachments/assets/27a09eef-9c4d-4479-9752-011e304bfd43)
+https://github.com/user-attachments/assets/205d257a-411e-4a54-89f3-afe97f68ca67
 
 
 
-![IMG20251206213656](https://github.com/user-attachments/assets/0d2fc8f1-68f9-456c-8a65-6341973e98c9)
+
 
