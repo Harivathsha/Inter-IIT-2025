@@ -82,11 +82,13 @@ rosdep install --from-paths src --ignore-src -r -y
 colcon build --symlink-install
 
 ```
+
+[Screencast from 12-06-2025 08_58_28 PM.webm](https://github.com/user-attachments/assets/e692509e-10ed-4ef0-893d-902af53ee6e7)
+
+
+
 <img width="1026" height="558" alt="Screenshot from 2026-03-26 23-19-12" src="https://github.com/user-attachments/assets/f1156a39-781c-40f1-bdcf-57ad62cb48ce" />
 
-
-
-https://github.com/user-attachments/assets/733e938f-0d12-434c-ae73-8dfd0f233dbe
 
 
 
